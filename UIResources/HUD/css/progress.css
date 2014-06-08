@@ -1,0 +1,191 @@
+ #page-wrap {
+	position: absolute;
+	width: 300px;
+	bottom: 80px;
+	right: 50px;
+	-webkit-perspective: 600px;
+ }
+ 
+ #page-wrap > div {
+	-webkit-transform: rotateY(340deg);
+ }
+
+.meter {
+	height: 2em;  /* Can be anything */
+	margin: 1em 0 2em 0; /* Just for demo spacing */
+	background: rgba(100, 100, 100, 0.0);
+	/*
+	background: #555;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	padding: 10px;
+	-webkit-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+	-moz-box-shadow   : inset 0 -1px 1px rgba(255,255,255,0.3);
+	box-shadow        : inset 0 -1px 1px rgba(255,255,255,0.3);
+	*/
+}
+
+.meter-bar {
+	overflow: visible; /* Allow displaying the percentage if the bar's width is low */
+}
+
+.meter-caption {
+	font-family: "Orbitron";
+	text-align: right;
+    font-size: 1.5em;
+    text-shadow: 2px 2px black;
+    color: white;
+}
+
+.meter-label {
+	white-space: nowrap; /* Avoid text-wrapping when the bar's width is low */
+	font-family: "Orbitron";
+	padding-left: 1em;
+	padding-right: 1em;
+	color: white;
+	font-weight: 800;
+    font-size: 1.5em;
+	text-shadow: 2px 2px black;
+}
+
+.meter > span {
+	display: block;
+	height: 100%;
+	   -webkit-border-top-right-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+		   -moz-border-radius-topright: 8px;
+		-moz-border-radius-bottomright: 8px;
+			   border-top-right-radius: 8px;
+			border-bottom-right-radius: 8px;
+		-webkit-border-top-left-radius: 20px;
+	 -webkit-border-bottom-left-radius: 20px;
+			-moz-border-radius-topleft: 20px;
+		 -moz-border-radius-bottomleft: 20px;
+				border-top-left-radius: 20px;
+			 border-bottom-left-radius: 20px;
+	background-color: rgb(43,194,83);
+	background-image: -webkit-gradient(
+	  linear,
+	  left bottom,
+	  left top,
+	  color-stop(0, rgb(43,194,83)),
+	  color-stop(1, rgb(84,240,84))
+	 );
+	background-image: -moz-linear-gradient(
+	  center bottom,
+	  rgb(43,194,83) 37%,
+	  rgb(84,240,84) 69%
+	 );
+	-webkit-box-shadow: 
+	  inset 0 2px 9px  rgba(255,255,255,0.3),
+	  inset 0 -2px 6px rgba(0,0,0,0.4);
+	-moz-box-shadow: 
+	  inset 0 2px 9px  rgba(255,255,255,0.3),
+	  inset 0 -2px 6px rgba(0,0,0,0.4);
+	box-shadow: 
+	  inset 0 2px 9px  rgba(255,255,255,0.3),
+	  inset 0 -2px 6px rgba(0,0,0,0.4);
+	position: relative;
+}
+.meter > span:after {
+	content: "";
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	background-image: 
+	   -webkit-gradient(linear, 0 0, 100% 100%, 
+		  color-stop(.25, rgba(255, 255, 255, .2)), 
+		  color-stop(.25, transparent), color-stop(.5, transparent), 
+		  color-stop(.5, rgba(255, 255, 255, .2)), 
+		  color-stop(.75, rgba(255, 255, 255, .2)), 
+		  color-stop(.75, transparent), to(transparent)
+	   );
+	background-image: 
+		-moz-linear-gradient(
+		  -45deg, 
+		  rgba(255, 255, 255, .2) 25%, 
+		  transparent 25%, 
+		  transparent 50%, 
+		  rgba(255, 255, 255, .2) 50%, 
+		  rgba(255, 255, 255, .2) 75%, 
+		  transparent 75%, 
+		  transparent
+	   );
+	z-index: 1;
+	-webkit-background-size: 50px 50px;
+	-moz-background-size: 50px 50px;
+	-webkit-animation: meter-bkg-move 2s linear infinite;
+	   -webkit-border-top-right-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+		   -moz-border-radius-topright: 8px;
+		-moz-border-radius-bottomright: 8px;
+			   border-top-right-radius: 8px;
+			border-bottom-right-radius: 8px;
+		-webkit-border-top-left-radius: 20px;
+	 -webkit-border-bottom-left-radius: 20px;
+			-moz-border-radius-topleft: 20px;
+		 -moz-border-radius-bottomleft: 20px;
+				border-top-left-radius: 20px;
+			 border-bottom-left-radius: 20px;
+	overflow: hidden;
+}
+
+@-webkit-keyframes meter-bkg-move {
+	0% {
+	   background-position: 0 0;
+	}
+	100% {
+	   background-position: 50px 50px;
+	}
+}
+
+.orange > span {
+	background-color: #f1a165;
+	background-image: -moz-linear-gradient(top, #f1a165, #f36d0a);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f1a165),color-stop(1, #f36d0a));
+	background-image: -webkit-linear-gradient(#f1a165, #f36d0a); 
+}
+
+.red > span {
+	background-color: #f0a3a3;
+	background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f0a3a3),color-stop(1, #f42323));
+	background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+}
+
+.bluered > span {
+	background-image: -webkit-linear-gradient(
+		135deg,
+		transparent,
+		transparent 33%,
+		rgba(0,0,0,.1) 33%,
+		rgba(0,0,0,.1) 66%,
+		transparent 66%),
+		-webkit-linear-gradient(
+			top,
+			rgba(255, 255, 255, .25),
+			rgba(0,0,0,.2)),
+		-webkit-linear-gradient( left, #09c, #f44);
+}
+
+.blueyellow > span {
+	background-image: -webkit-linear-gradient(
+		135deg,
+		transparent,
+		transparent 33%,
+		rgba(0,0,0,.1) 33%,
+		rgba(0,0,0,.1) 66%,
+		transparent 66%),
+		-webkit-linear-gradient(
+			top,
+			rgba(255, 255, 255, .25),
+			rgba(0,0,0,.2)),
+		-webkit-linear-gradient( left, #09c, #ff0);
+}
+
+.nostripes > span > span, .nostripes > span:after {
+	-webkit-animation: none;
+	background-image: none;
+}
+
+

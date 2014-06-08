@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.wheelmenu.js"></script>
+		<script type="text/javascript" src="js/jquery.transit.min.js"></script>
+		<script type="text/javascript" src="js/coherent.js"></script>
+
+		<!-- IN GAME MENU -->
+
+		<!-- <script src="coherent.js"></script>  -->
+		<link rel="stylesheet" href="css/flat-ui-official/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="css/flat-ui-official/css/flat-ui.css" />
+		<link rel="stylesheet" href="css/in_game_menu.css" />
+
+		<!-- IN GAME MENU END-->
+
+		<link rel="stylesheet" type="text/css" href="css/fonts.css" />
+
+		<link rel="stylesheet" type="text/css" href="css/progress.css" />
+
+		<!-- IN GAME MENU -->
+		<style>
+			*
+			{
+			  -webkit-user-select: none;
+			  -khtml-user-select: none;
+			  -moz-user-select: -moz-none;
+			  -o-user-select: none;
+			  user-select: none;
+			}
+
+			.hidden {
+				display: none;
+				visibility: hidden;
+			}
+		</style>
+		<!-- IN GAME MENU END-->
+
+	</head>
+	<body>
+
+		<div id="page-wrap">
+			<div class="meter-caption">HEALTH</div>
+			<div id="meter-hp" class="meter bluered">
+				<span class="meter-bar" style="width: 100%; float: right;"><span class="meter-label" style="float:right;">100 %</span></span>
+			</div>
+			<div class="meter-caption">AMMO</div>
+			<div id="meter-ammo" class="meter blueyellow">
+				<span class="meter-bar" style="width: 100%; float: right;"><span class="meter-label" style="float:right;">100 %</span></span>
+			</div>
+		</div>
+
+		<p style="position:fixed; bottom: 60px; left:10px; color:white">
+		To show the Inventory, press "I". <br>
+		To show the in-game menu press "Tab".
+		</p>
+
+	<script type="text/javascript">
+		// Scripts for the health bar
+
+		// Initial animation
+		$(function() {
+			$(".meter > span").each(function() {
+				$(this)
+					.data("origWidth", $(this).width())
+					.width(0)
+					.animate({
+						width: $(this).data("origWidth")
+					}, 1200);
+			});
+		});
+	</script>
+	<script>
+		function AnimatedMeter(meter) {
+			this.meter = meter;
+			this.meter_bar =  $(meter).find('.meter-bar');
+			this.meter_label = $(meter).find(".meter-label")
+			this.value = 100;
+			this.targetValue = this.value;
+		}
+
+		AnimatedMeter.prototype.doAnimate = function (value) {
+			this.targetValue = value;
+			var self = this;
+
+			$({value: this.value}).animate({
+				value: value
+			},{
+				progress: function (animation, p) {
+					self.value = this.value;
+
+					self.meter_bar.width(self.value + '%');
+					self.meter_label.text(self.value.toFixed() + '%');
+
+					if (self.targetValue != value) {
+						animation.stop();
+						self.doAnimate(self.targetValue);
+					}
+				},
+				done: function () {
+					self.value = self.targetValue;
+				}
+			});
+		};
+
+		AnimatedMeter.prototype.setValue = function (value) {
+			if (this.targetValue === value) {
+				return;
+			}
+
+			if (this.targetValue == this.value) {
+				this.doAnimate(value);
+			}
+			this.targetValue = value;
+		};
+	</script>
+
+	<script type="text/javascript">
+		// Coherent UI communication
+		var healthBar = new AnimatedMeter($('#meter-hp')),
+			ammoBar = new AnimatedMeter($('#meter-ammo'));
+
+		engine.on('ChangeHP', function(percent) {
+			healthBar.setValue(percent);
+		});
+		engine.on('ChangeAmmo', function(percent) {
+			ammoBar.setValue(percent);
+		});
+
+		window.setTimeout(function() {
+				engine.call("CallFromJavaScript", 123);
+				engine.call("CalledFromJSString", "Hello from JavaScript!");
+			},
+			3000
+		);
+	</script>
+
+
+	<!-- IN GAME MENU -->
+	<div id="inGameMenu" class="cui_button_option hidden"></div>
+
+	<script src="js/jquery-2.0.3.min.js"></script>
+	<script src="js/game_menu.js"></script>
+	<script src="js/in_game_menu.js"></script>
+	<!-- IN GAME MENU END-->
+
+	</body>
+</html>

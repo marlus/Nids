@@ -1,0 +1,13 @@
+@font-face {
+	font-family: 'Unreal Tournament';
+	font-style: normal;
+	font-weight: 400;
+	src: local('☺'), url("../fonts/unreal_tournament.woff") format('woff');
+}
+
+@font-face {
+	font-family: 'Orbitron';
+	font-style: normal;
+	font-weight: 400;
+	src: local('☺'), url("../fonts/Orbitron-regular.woff") format('woff');
+}
