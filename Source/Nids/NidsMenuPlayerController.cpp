@@ -28,12 +28,9 @@ void ANidsMenuPlayerController::SetupInputComponent()
 	APlayerController::bEnableClickEvents = true;
 
 	// UIs
-	BIND_ACTION(APlayerController::InputComponent, "MouseDown", IE_Pressed,
-		&ANidsMenuPlayerController::MouseDown);
-	BIND_ACTION(APlayerController::InputComponent, "MouseUp", IE_Released,
-		&ANidsMenuPlayerController::MouseUp);
-	BIND_AXIS(APlayerController::InputComponent, "Turn",
-		&ANidsMenuPlayerController::MouseMove);
+	BIND_ACTION(APlayerController::InputComponent, "MouseDown", IE_Pressed, &ANidsMenuPlayerController::MouseDown);
+	BIND_ACTION(APlayerController::InputComponent, "MouseUp", IE_Released, &ANidsMenuPlayerController::MouseUp);
+	BIND_AXIS(APlayerController::InputComponent, "Turn", &ANidsMenuPlayerController::MouseMove);
 }
 
 static void MouseEvent(ANidsMenuPlayerController* controller,
