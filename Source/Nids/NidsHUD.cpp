@@ -51,3 +51,8 @@ void ANidsHUD::CreateView()
 
 	CoherentUIHUD->CreateHUDView(info, TEXT("coui://UIResources/Menu/menu.html"));
 }
+
+UCoherentUIHUD* ANidsHUD::GetCoherentUIHUD() const
+{
+	return CoherentUIHUD;
+}
