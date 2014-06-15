@@ -6,6 +6,13 @@ ANidsGameMode::ANidsGameMode(const class FPostConstructInitializeProperties& PCI
 	: Super(PCIP)
 {
 	HUDClass = ANidsGameHUD::StaticClass();
+
+	// set default pawn class to our Blueprinted character
+	static ConstructorHelpers::FObjectFinder<UClass> PlayerPawnBPClass(TEXT("Class'/Game/Characters/Nids/NidsCharacterBP.NidsCharacterBP_C'"));
+	if (PlayerPawnBPClass.Object != NULL)
+	{
+		DefaultPawnClass = PlayerPawnBPClass.Object;
+	}
 }
 
 
