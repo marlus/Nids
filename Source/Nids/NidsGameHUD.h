@@ -37,6 +37,4 @@ private:
 	/** Crosshair asset pointer */
 	UTexture2D* CrosshairTex;
 
-	UPROPERTY(VisibleDefaultsOnly, Category = HUD)
-	TSubobjectPtr<UCoherentUIHUD> CoherentUIHUD;
 };

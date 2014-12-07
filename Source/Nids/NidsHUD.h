@@ -36,6 +36,4 @@ public:
 private:
 	void CreateView();
 
-	UPROPERTY(VisibleDefaultsOnly, Category = HUD)
-	TSubobjectPtr<UCoherentUIHUD> CoherentUIHUD;
 };

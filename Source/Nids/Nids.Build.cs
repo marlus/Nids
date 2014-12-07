@@ -11,10 +11,10 @@ public class Nids : ModuleRules
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
         // CoherentUIPlugin
-        PrivateDependencyModuleNames.AddRange( new string[] { "CoherentUIPlugin", "CoherentUI" } );
+        //PrivateDependencyModuleNames.AddRange( new string[] { "CoherentUIPlugin", "CoherentUI" } );
 
 		// Uncomment if you are using Slate UI
-		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 		
 		// Uncomment if you are using online features
 		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
